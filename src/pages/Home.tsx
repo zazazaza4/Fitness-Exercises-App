@@ -1,5 +1,11 @@
-import { FC } from "react";
+import { Box } from "@mui/material";
+import { FC, useState } from "react";
+import { HeroBanner } from "../components";
 
 export const Home: FC = () => {
-  return <div>Home</div>;
+  return (
+    <Box>
+      <HeroBanner />
+    </Box>
+  );
 };
