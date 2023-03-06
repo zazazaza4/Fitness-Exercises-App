@@ -1,14 +1,56 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
-import { ChangeEvent, FC, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import { IBodyParts, IExercise } from "../@types";
 
-type Props = {};
+import { BASE_URL, exerciseOptions, fetchData } from "../utils/fetchData";
 
-export const SearchExercises: FC = (props: Props) => {
+interface ISearchExercisesProps {
+  setExercises: Dispatch<SetStateAction<never[]>>;
+  bodyPart: IBodyParts;
+  setBodyPart: Dispatch<SetStateAction<IBodyParts>>;
+}
+
+export const SearchExercises: FC<ISearchExercisesProps> = (props) => {
   const [search, setSearch] = useState("");
+  const [exercise, setExercise] = useState<IExercise[]>([]);
+  const [bodyParts, setBodyParts] = useState<IBodyParts[]>([]);
+
+  useEffect(() => {
+    const fetchExercisesData = async () => {
+      const bodyPartsData: IBodyParts[] = await fetchData<IBodyParts[]>(
+        `${BASE_URL}bodyPartList`,
+        exerciseOptions
+      );
+      setBodyParts([IBodyParts.ALL, ...bodyPartsData]);
+    };
+
+    fetchExercisesData();
+  }, []);
 
   const handleSearch = async () => {
     if (search) {
-      //fetchData
+      const exercisesData: IExercise[] = await fetchData(
+        BASE_URL,
+        exerciseOptions
+      );
+
+      const searchedExercises = exercisesData.filter(
+        (exercise) =>
+          exercise.name.toLowerCase().includes(search) ||
+          exercise.target.toLowerCase().includes(search) ||
+          exercise.equipment.toLowerCase().includes(search) ||
+          exercise.bodyPart.toLowerCase().includes(search)
+      );
+
+      setSearch("");
+      setExercise(searchedExercises);
     }
   };
 
@@ -66,6 +108,15 @@ export const SearchExercises: FC = (props: Props) => {
         >
           Search
         </Button>
+      </Box>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          p: "20px",
+        }}
+      >
+        {/* <HorizontalScrollBar/> */}
       </Box>
     </Stack>
   );
