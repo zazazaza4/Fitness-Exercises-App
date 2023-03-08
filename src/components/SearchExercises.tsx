@@ -10,14 +10,19 @@ import {
 import { IBodyParts, IExercise } from "../@types";
 
 import { BASE_URL, exerciseOptions, fetchData } from "../utils/fetchData";
+import { HorizontalScrollbar } from "./HorizontalScrollbar";
 
 interface ISearchExercisesProps {
-  setExercises: Dispatch<SetStateAction<never[]>>;
+  setExercises: Dispatch<SetStateAction<IExercise[]>>;
   bodyPart: IBodyParts;
   setBodyPart: Dispatch<SetStateAction<IBodyParts>>;
 }
 
-export const SearchExercises: FC<ISearchExercisesProps> = (props) => {
+export const SearchExercises: FC<ISearchExercisesProps> = ({
+  bodyPart,
+  setBodyPart,
+  setExercises,
+}) => {
   const [search, setSearch] = useState("");
   const [exercise, setExercise] = useState<IExercise[]>([]);
   const [bodyParts, setBodyParts] = useState<IBodyParts[]>([]);
@@ -50,7 +55,7 @@ export const SearchExercises: FC<ISearchExercisesProps> = (props) => {
       );
 
       setSearch("");
-      setExercise(searchedExercises);
+      setExercises(searchedExercises);
     }
   };
 
@@ -116,7 +121,11 @@ export const SearchExercises: FC<ISearchExercisesProps> = (props) => {
           p: "20px",
         }}
       >
-        {/* <HorizontalScrollBar/> */}
+        <HorizontalScrollbar
+          data={bodyParts}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
+        />
       </Box>
     </Stack>
   );
