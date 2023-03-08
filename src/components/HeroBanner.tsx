@@ -1,10 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 import { FC } from "react";
 
+import styles from "../global.module.css";
 import HeroBannerImage from "../assets/images/banner.png";
 
-type Props = {};
-export const HeroBanner: FC = (props: Props) => {
+export const HeroBanner: FC = () => {
   return (
     <Box
       sx={{
@@ -35,7 +35,7 @@ export const HeroBanner: FC = (props: Props) => {
       >
         Sweat, Smile <br /> and Repeat
       </Typography>
-      <Typography lineHeight="35px" fontSize="22px" mb="4">
+      <Typography lineHeight="35px" fontSize="22px" mb={4}>
         Check out the most effective exercises
       </Typography>
       <Button
@@ -60,7 +60,11 @@ export const HeroBanner: FC = (props: Props) => {
       >
         Exercise
       </Typography>
-      <img src={HeroBannerImage} alt="banner" className="hero-banner-img" />
+      <img
+        src={HeroBannerImage}
+        alt="banner"
+        className={styles.heroBannerImg}
+      />
     </Box>
   );
 };
