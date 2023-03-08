@@ -1,0 +1,51 @@
+.heroBannerImg {
+  position: absolute;
+  right: 40px;
+  top: 0px;
+  width: 700px;
+  height: 900px;
+  margin-top: -330px;
+}
+
+.bodyPartCard {
+  transform: scale(1, 1);
+  transition: 0.3s all ease-in-out;
+}
+
+.bodyPartCard:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.rightArrow,
+.leftArrow {
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FF2625;
+  font-size: 25px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -20px;
+  right: 80px;
+  transform: scale(1, 1);
+  transition: 0.3s all ease-in-out;
+}
+
+.leftArrow {
+  right: 140px;
+}
+
+.rightArrow:hover,
+.leftArrow:hover {
+  transform: scale(1.3, 1.3);
+}
+
+@media screen and (max-width:1200px) {
+  .heroBannerImg {
+    display: none;
+  }
+}
