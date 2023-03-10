@@ -16,6 +16,8 @@ export const exerciseOptions = {
 };
 
 export const BASE_URL: string = process.env.REACT_APP_BASE_URL || "";
+export const YOUTUBE_SEARCH_URL: string =
+  "https://youtube-search-and-download.p.rapidapi.com";
 
 export const fetchData = async <T>(
   url: string,
