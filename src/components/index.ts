@@ -1,3 +1,5 @@
+export { Detail } from "./Detail";
+export { ExerciseCard } from "./ExerciseCard";
 export { HorizontalScrollbar } from "./HorizontalScrollbar";
 export { Exercises } from "./Exercises";
 export { Navbar } from "./Navbar";
