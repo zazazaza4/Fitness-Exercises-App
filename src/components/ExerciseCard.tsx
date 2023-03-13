@@ -1,7 +1,9 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import { Link } from "react-router-dom";
+
 import { IExercise } from "../@types";
+import styles from "../global.module.css";
 
 interface IExerciseCardProps {
   exercise: IExercise;
@@ -10,7 +12,7 @@ interface IExerciseCardProps {
 export const ExerciseCard: FC<IExerciseCardProps> = ({ exercise }) => {
   const { id, gifUrl, name, bodyPart, target } = exercise;
   return (
-    <Link className="exerciseCard" to={`/exercises/${id}`}>
+    <Link className={styles.exerciseCard} to={`/exercises/${id}`}>
       <img src={gifUrl} alt={name} loading="lazy" />
       <Stack direction="row">
         <Button
