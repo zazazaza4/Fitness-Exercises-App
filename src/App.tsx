@@ -10,7 +10,7 @@ export const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/exercise/:id" element={<ExerciseDetail />} />
+        <Route path="/exercises/:id" element={<ExerciseDetail />} />
       </Routes>
       <Footer />
     </Box>
