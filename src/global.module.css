@@ -44,6 +44,61 @@
   transform: scale(1.3, 1.3);
 }
 
+.detailImage {
+  width: 729px;
+  height: 742px;
+}
+
+.heroBannerImg {
+  position: absolute;
+  right: 40px;
+  top: 0px;
+  width: 700px;
+  height: 900px;
+  margin-top: -330px;
+
+}
+
+.exerciseCard {
+  width: 400px;
+  height: 445px;
+  background: #fff;
+  border-top: 4px solid #FF2625;
+  border-bottom-left-radius: 20px;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-bottom: 10px;
+  transform: scale(1, 1);
+  transition: 0.3s all ease-in-out;
+}
+
+.exerciseCard img {
+  height: 326px;
+}
+
+.exerciseVideo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 387px;
+  height: 381px;
+  text-decoration: none;
+}
+
+
+.exerciseCard:hover,
+.bodyPartCard:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.searchBtn:hover {
+  color: #FF2625 !important;
+  border: 1px solid #FF2625 !important;
+}
+
+
 @media screen and (max-width:1200px) {
   .heroBannerImg {
     display: none;
