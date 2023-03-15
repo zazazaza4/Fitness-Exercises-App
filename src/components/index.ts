@@ -1,3 +1,6 @@
+export { Loader } from "./Loader";
+export { SimilarExercises } from "./SimilarExercises";
+export { ExerciseVideos } from "./ExerciseVideos";
 export { Detail } from "./Detail";
 export { ExerciseCard } from "./ExerciseCard";
 export { HorizontalScrollbar } from "./HorizontalScrollbar";
