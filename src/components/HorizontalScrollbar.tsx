@@ -4,29 +4,44 @@ import { Dispatch, FC, SetStateAction, useContext } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
 import { BodyPart } from "./BodyPart";
-import { IBodyParts } from "../@types";
+import { IBodyParts, IExercise } from "../@types";
 
 import RightArrowIcon from "../assets/icons/right-arrow.png";
 import LeftArrowIcon from "../assets/icons/left-arrow.png";
 
 import styles from "../global.module.css";
+import { ExerciseCard } from "./ExerciseCard";
 
 interface IHorizontalScrollbarProps {
-  data: IBodyParts[];
-  bodyPart: IBodyParts;
-  setBodyPart: Dispatch<SetStateAction<IBodyParts>>;
+  data: IExercise[] | IBodyParts[];
+  bodyPart?: IBodyParts;
+  setBodyPart?: Dispatch<SetStateAction<IBodyParts>>;
+  isBodyParts?: boolean;
 }
 
 export const HorizontalScrollbar: FC<IHorizontalScrollbarProps> = ({
   data,
   bodyPart,
   setBodyPart,
+  isBodyParts = true,
 }) => {
   return (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-      {data.map((item) => (
-        <Box title={item} key={item} m="0 40px">
-          <BodyPart item={item} setBodyPart={setBodyPart} bodyPart={bodyPart} />
+      {data.map((item: IBodyParts | IExercise) => (
+        <Box
+          title={isBodyParts ? String(item) : (item as IExercise).name}
+          key={isBodyParts ? (item as IBodyParts) : (item as IExercise).id}
+          m="0 40px"
+        >
+          {isBodyParts ? (
+            <BodyPart
+              item={item as IBodyParts}
+              setBodyPart={setBodyPart!}
+              bodyPart={bodyPart!}
+            />
+          ) : (
+            <ExerciseCard exercise={item as IExercise} />
+          )}
         </Box>
       ))}
     </ScrollMenu>
