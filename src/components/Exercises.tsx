@@ -48,7 +48,7 @@ export const Exercises: FC<IExercisesProps> = ({
         exercisesData = await fetchData(BASE_URL, exerciseOptions);
       } else {
         exercisesData = await fetchData(
-          `${BASE_URL}bodyPart/${bodyPart}`,
+          `${BASE_URL}/bodyPart/${bodyPart}`,
           exerciseOptions
         );
       }
@@ -57,7 +57,7 @@ export const Exercises: FC<IExercisesProps> = ({
     };
 
     fetchExercisesData();
-  }, [bodyPart]);
+  }, [bodyPart, setExercises]);
 
   return (
     <Box
@@ -81,8 +81,8 @@ export const Exercises: FC<IExercisesProps> = ({
         flexWrap="wrap"
         justifyContent="center"
       >
-        {currentExercises.map((exercise, index) => (
-          <ExerciseCard key={index} exercise={exercise} />
+        {currentExercises.map((exercise) => (
+          <ExerciseCard key={exercise.id} exercise={exercise} />
         ))}
       </Stack>
       <Stack mt="100px" alignItems="center">
