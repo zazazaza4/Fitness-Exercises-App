@@ -33,3 +33,30 @@ export interface IExercise {
   name: string;
   target: string;
 }
+
+interface IThumbnails {
+  height: number;
+  url: string;
+  width: number;
+}
+export interface IVideo {
+  channelId: string;
+  channelName: string;
+  description: string;
+  lengthText: string;
+  publishedTimeText: string;
+  thumbnails: IThumbnails[];
+  title: string;
+  videoId: string;
+  viewCountText: string;
+}
+
+export interface IVideoContent {
+  video: IVideo;
+}
+
+export interface IVideoFetch {
+  contents: IVideoContent[];
+  estimatedResults: string;
+  next: string;
+}
