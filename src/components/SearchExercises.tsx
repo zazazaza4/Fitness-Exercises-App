@@ -24,13 +24,12 @@ export const SearchExercises: FC<ISearchExercisesProps> = ({
   setExercises,
 }) => {
   const [search, setSearch] = useState("");
-  const [exercise, setExercise] = useState<IExercise[]>([]);
   const [bodyParts, setBodyParts] = useState<IBodyParts[]>([]);
 
   useEffect(() => {
     const fetchExercisesData = async () => {
       const bodyPartsData: IBodyParts[] = await fetchData<IBodyParts[]>(
-        `${BASE_URL}bodyPartList`,
+        `${BASE_URL}/bodyPartList`,
         exerciseOptions
       );
       setBodyParts([IBodyParts.ALL, ...bodyPartsData]);
