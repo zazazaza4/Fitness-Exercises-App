@@ -8,6 +8,10 @@ export const HeroBanner: FC = () => {
   return (
     <Box
       sx={{
+        textAlign: {
+          xs: "center",
+          lg: "left",
+        },
         mt: {
           lg: "212px",
           xs: "70px",
