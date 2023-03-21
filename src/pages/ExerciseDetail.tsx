@@ -2,7 +2,12 @@ import { Box } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IExercise, IVideoContent, IVideoFetch } from "../@types";
-import { Detail, ExerciseVideos, SimilarExercises } from "../components";
+import {
+  Detail,
+  ExerciseVideos,
+  Loader,
+  SimilarExercises,
+} from "../components";
 import {
   BASE_URL,
   exerciseOptions,
@@ -41,13 +46,13 @@ export const ExerciseDetail: FC<IExerciseDetailProps> = () => {
       setExerciseVideos(contents);
 
       const targetMuscleExercisesData: IExercise[] = await fetchData(
-        `${BASE_URL}/exercise/target/${exerciseDetailData.target}`,
+        `${BASE_URL}/target/${exerciseDetailData.target}`,
         exerciseOptions
       );
       setTargetMuscleExercises(targetMuscleExercisesData);
 
       const equipmentExercisesData: IExercise[] = await fetchData(
-        `${BASE_URL}/exercise/equipment/${exerciseDetailData.equipment}`,
+        `${BASE_URL}/equipment/${exerciseDetailData.equipment}`,
         exerciseOptions
       );
       setEquipmentExercises(equipmentExercisesData);
@@ -56,7 +61,7 @@ export const ExerciseDetail: FC<IExerciseDetailProps> = () => {
     fetchExercisesData();
   }, [id]);
 
-  if (!exerciseDetail) return <div>d</div>;
+  if (!exerciseDetail) return <Loader />;
 
   return (
     <Box>
