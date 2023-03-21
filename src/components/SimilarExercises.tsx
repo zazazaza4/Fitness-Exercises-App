@@ -14,17 +14,20 @@ export const SimilarExercises: FC<ISimilarExercisesProps> = ({
   targetMuscleExercises,
   equipmentExercises,
 }) => {
+  if (!targetMuscleExercises || !equipmentExercises) return <></>;
+
   return (
     <Box
       sx={{
-        mt: { lg: "100px", xs: "0" },
+        mt: { lg: "80px", xs: "0px" },
       }}
     >
-      <Typography variant="h3" mb={5}>
+      <Typography variant="h3" mb={8}>
         Exercises that target the same muscle group
       </Typography>
       <Stack
         direction="row"
+        mb={8}
         sx={{
           p: "2",
           position: "relative",
@@ -39,7 +42,7 @@ export const SimilarExercises: FC<ISimilarExercisesProps> = ({
           <Loader />
         )}
       </Stack>
-      <Typography variant="h3" mb={5}>
+      <Typography variant="h3" mb={8}>
         Exercises that use the same equipment
       </Typography>
       <Stack
