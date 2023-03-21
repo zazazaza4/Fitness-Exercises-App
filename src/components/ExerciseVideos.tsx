@@ -16,11 +16,10 @@ export const ExerciseVideos: FC<IExerciseVideosProps> = ({
 }) => {
   if (!exerciseVideos) return <></>;
 
-  console.log(exerciseVideos);
   return (
     <Box
       sx={{
-        marginTop: { lg: "200px", xs: "20px" },
+        marginTop: { lg: "80px", xs: "20px" },
       }}
       p="20px"
     >
@@ -40,7 +39,7 @@ export const ExerciseVideos: FC<IExerciseVideosProps> = ({
           gap: { lg: "110px", xs: "0" },
         }}
       >
-        {exerciseVideos?.slice(0, 6).map(({ video }, index) => (
+        {exerciseVideos?.slice(0, 3).map(({ video }, index) => (
           <a
             key={index}
             className={styles.exerciseVideo}
