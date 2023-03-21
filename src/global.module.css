@@ -29,7 +29,7 @@
   font-size: 25px;
   border-radius: 4px;
   position: absolute;
-  bottom: -20px;
+  bottom: -40px;
   right: 80px;
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
@@ -90,7 +90,7 @@
 
 .exerciseCard:hover,
 .bodyPartCard:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.05, 1.05);
 }
 
 .searchBtn:hover {
@@ -102,5 +102,11 @@
 @media screen and (max-width:1200px) {
   .heroBannerImg {
     display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .exerciseCard {
+    width: 300px;
   }
 }
