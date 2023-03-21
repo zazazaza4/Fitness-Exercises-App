@@ -5,6 +5,16 @@ import Logo from "../assets/images/Logo.png";
 import { Link } from "react-router-dom";
 
 export const Navbar: FC = () => {
+  const scrollTo = (sectionID: string) => {
+    const section: HTMLElement | null = document.getElementById(sectionID);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <Stack
       direction="row"
@@ -18,7 +28,10 @@ export const Navbar: FC = () => {
           sm: "32px",
           xs: "20px",
         },
-        justifyContent: "none",
+        justifyContent: {
+          lg: "flex-start",
+          xs: "space-evenly",
+        },
       }}
       px="20px"
     >
@@ -44,15 +57,16 @@ export const Navbar: FC = () => {
         >
           Home
         </Link>
-        <a
-          href="#exerceses"
+        <Link
+          to="/#exerceses"
+          onClick={() => scrollTo("exercises")}
           style={{
             textDecoration: "none",
             color: "#3a1212",
           }}
         >
           Exercise
-        </a>
+        </Link>
       </Stack>
     </Stack>
   );
