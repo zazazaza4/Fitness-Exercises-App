@@ -11,6 +11,14 @@ interface IExerciseCardProps {
 
 export const ExerciseCard: FC<IExerciseCardProps> = ({ exercise }) => {
   const { id, gifUrl, name, bodyPart, target } = exercise;
+
+  function truncateString(str: string, limit: number): string {
+    if (str.length > limit) {
+      return str.substr(0, limit) + "...";
+    }
+    return str;
+  }
+
   return (
     <Link className={styles.exerciseCard} to={`/exercises/${id}`}>
       <img src={gifUrl} alt={name} loading="lazy" />
@@ -49,7 +57,7 @@ export const ExerciseCard: FC<IExerciseCardProps> = ({ exercise }) => {
         textTransform="capitalize"
         fontSize="24px"
       >
-        {name}
+        {truncateString(name, 20)}
       </Typography>
     </Link>
   );
