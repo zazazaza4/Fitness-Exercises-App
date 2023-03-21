@@ -84,6 +84,7 @@ export const SearchExercises: FC<ISearchExercisesProps> = ({
             },
             width: {
               lg: "800px",
+              md: "600px",
               xs: "250px",
             },
             backgroundColor: "#fff",
